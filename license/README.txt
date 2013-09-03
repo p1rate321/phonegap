@@ -1,12 +1,5 @@
-This sample application demonstrates the use of the PhoneGap media object APIs 
+﻿This sample application demonstrates the use of the PhoneGap media object APIs 
 for audio recording and playback. 
-
-Intel(R) HTML5 Development Environment Beta
--------------------------------------------
-This sample is part of the Intel(R) HTML5 Development Environment tool. 
-Please sign up the beta at http://software.intel.com/en-us/html5.
-To see the technical detail of the sample, please visit the sample article page 
-at http://software.intel.com/en-us/articles/media-sample-using-phonegap. 
 
 Application Files
 -----------------
