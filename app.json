@@ -8,6 +8,6 @@
 	"keywords":["PhoneGap"],
 	"iconUrl":"https://github.com/gomobile/sample-phonegap-audio/blob/master/icon.png",
 	"screenshotUrl":"https://github.com/gomobile/sample-phonegap-audio/blob/master/screenshot.png",
-	"visible" : "true",
+	"visible" : "false",
 	"zipUrl":""
 }
