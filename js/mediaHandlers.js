@@ -132,7 +132,7 @@ function stopRecording() {
 
     clearProgressTimmer();
 
-    document.getElementById('RecStatusID').innerHTML = "Status: stopped record";
+    document.getElementById('RecStatusID').innerHTML = "<p>Status: stopped record</p>";
     console.log("***test: recording stopped***");
 }
 
@@ -156,7 +156,7 @@ function playMusic() {
     // Play audio
     if (my_audio) {
         my_audio.play();
-        document.getElementById('PlayStatusID').innerHTML = "Status: playing...";
+        document.getElementById('PlayStatusID').innerHTML = "<p></p>Status: playing...";
 
         setButtonState(myMediaState.playback);
 
@@ -173,13 +173,13 @@ function playMusic() {
                     // reached end of media: same as clicked stop-music 
                     clearProgressTimmer();
                     setAudioPosition('media_pos', "0 sec");
-                    document.getElementById('PlayStatusID').innerHTML = "Status: stopped";
+                    document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped<\p>";
                     setButtonState(myMediaState.stopped);
                 }
             },
             // error callback
             function (e) {
-                document.getElementById('PlayStatusID').innerHTML = "Status: Error on getting position - " + e;
+                document.getElementById('PlayStatusID').innerHTML = "<p></p>Status: Error on getting position - " + e;
                 setAudioPosition("Error: " + e);
             });
         }, 1000);
@@ -190,7 +190,7 @@ function playMusic() {
 function pauseMusic() {
     if (my_audio) {
         my_audio.pause();
-        document.getElementById('PlayStatusID').innerHTML = "Status: paused";
+        document.getElementById('PlayStatusID').innerHTML = "<p>Status: paused</p>";
 
         clearProgressTimmer();
         setButtonState(myMediaState.paused);
@@ -210,7 +210,7 @@ function stopMusic() {
         my_audio = null; 
 
         clearProgressTimmer();
-        document.getElementById('PlayStatusID').innerHTML = "Status: stopped";
+        document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped</p>";
     }
 }
 function clearProgressTimmer() {
@@ -231,7 +231,7 @@ function onMediaCallError(error) {
 // Set audio position        
 //
 function setAudioPosition(audioPosID, position) {
-    document.getElementById(audioPosID).innerHTML = "Audio position: "+position;
+    document.getElementById(audioPosID).innerHTML = "<p></p>Audio position: "+position;
 }
 
 // only "Record" button is enabled at init state
