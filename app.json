@@ -12,5 +12,6 @@
 	"screenshotUrl":"https://github.com/gomobile/sample-phonegap-audio/blob/master/screenshot.png",
 	"visible" : "true",
 	"zipUrl":"",
+	"relname":"4.0.0",
 	"type":"appdesigner"
 }
