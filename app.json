@@ -4,7 +4,7 @@
 	"tooltip":"Use a Cordova media object to record and playback an audio sound.",
 	"description":"[App Designer Ready] Use a Cordova media object to record and playback audio. Also detects if a previous recording exists.",
 	"highlights":["Cordova API", "App Designer", "jQuery Mobile", "Audio Input"],
-	"apppreview":"true",
+	"apppreview":"false",
 	"appname":"demo.phonegap-audio",
 	"articleUrl":"http://software.intel.com/en-us/articles/media-sample-using-phonegap",
 	"keywords":["Cordova API", "App Designer", "jQuery Mobile", "Audio Input"],
