@@ -1,6 +1,6 @@
 /*
-* Copyright (c) 2012, Intel Corporation. All rights reserved.
-* File revision: 04 October 2012
+* Copyright (c) 2014, Intel Corporation. All rights reserved.
+* File revision: 04 February 2014
 * Please see http://software.intel.com/html5/license/samples 
 * and the included README.md file for license terms and conditions.
 */
@@ -61,10 +61,24 @@ function onSuccessFileSystem(fileSystem) {
         fileSystem.root.getFile(mediaRecFile, { create: true, exclusive: false }, onOK_GetFile, null);
     
 }
+
 function checkMediaRecFileExist() {
     checkFileOnly = true;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccessFileSystem, null);
 }
+
+/*Enable Mic image: Display Record or active image*/
+function enableMic(status){
+    if (status == 0){
+        document.getElementById('startRecID').src = "./images/simplemicrophone_rec.png";
+        document.getElementById('startRecID').className = " ";
+    }
+    else if (status == 1){
+        document.getElementById('startRecID').src = "./images/simplemicrophone.png";
+        document.getElementById('startRecID').className += " greenoutline";
+    }
+}
+
 
 function recordNow() {
     if (my_recorder) {
@@ -91,6 +105,8 @@ function recordNow() {
 // Record audio    
 //     
 function startRecording() {
+    
+    enableMic(1);
     // change buttons state
     setButtonState(myMediaState.recording);
 
@@ -124,6 +140,7 @@ function startRecording() {
 
 // Stop recording
 function stopRecording() {
+    enableMic(0);
     // enable "record" button but disable "stop"
     setButtonState(myMediaState.finishRec);
 
@@ -132,7 +149,7 @@ function stopRecording() {
 
     clearProgressTimmer();
 
-    document.getElementById('RecStatusID').innerHTML = "<p>Status: stopped record</p>";
+    document.getElementById('RecStatusID').innerHTML = "Status: stopped record";
     console.log("***test: recording stopped***");
 }
 
@@ -213,6 +230,7 @@ function stopMusic() {
         document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped</p>";
     }
 }
+
 function clearProgressTimmer() {
     if (progressTimmer) {
         clearInterval(progressTimmer);
@@ -231,13 +249,18 @@ function onMediaCallError(error) {
 // Set audio position        
 //
 function setAudioPosition(audioPosID, position) {
-    document.getElementById(audioPosID).innerHTML = "<p></p>Audio position: "+position;
+    if(audioPosID == "media_rec_pos"){
+        document.getElementById(audioPosID).innerHTML = "Recording position: 00:00:"+position;
+    }
+    if(audioPosID == "media_pos"){
+        document.getElementById(audioPosID).innerHTML = "Playback position: 00:00:"+position;
+    }
 }
 
 // only "Record" button is enabled at init state
 function setButtonState(curState)
 {
-    var id_disabled_map = {"startRecID":false, 
+    var id_disabled_map = {"startRecID":false,
                              "stopRecID":true, 
                              "startPlayID":true, 
                              "pausePlayID":true, 

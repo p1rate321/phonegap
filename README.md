@@ -1,31 +1,29 @@
+PhoneGap Audio
+-------------------------------------------
 This sample application demonstrates the use of the PhoneGap media object APIs 
 for audio recording and playback. 
 
 Intel(R) XDK
 -------------------------------------------
 This sample is part of the Intel(R) XDK. 
-Please sign up the beta at http://software.intel.com/en-us/html5.
+Download the Intel XDK at http://software.intel.com/en-us/html5.
 To see the technical detail of the sample, please visit the sample article page 
 at http://software.intel.com/en-us/articles/media-sample-using-phonegap. 
 
 Application Files
 -----------------
-* abstract.txt
 * app.json
-* config.xml
 * icon.png
 * index.html
-* readme.md
-* license/LICENSE
-* license/license.css
-* license/license.js
-* license/README.txt
+* README.md
+* LICENSE
 * screenshot.png
-* css/master.css
+* css/main.css
 * js/deviceCheck.js
-* js/mediaHandlers.js
+* js/mediaHandlers.
 
-Copyright (c) 2012, Intel Corporation. All rights reserved.
+
+Copyright (c) 2014, Intel Corporation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
@@ -52,20 +50,16 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-jQuery and jQuery Mobile
-------------------------
-* js/jquery/html5sample.min.css
-* js/jquery/jquery-1.8.0.js
-* js/jquery/jquery-1.8.0.min.js
-* js/jquery/jquery.mobile-1.2.0.min.js
-* js/jquery/jquery.mobile.structure-1.2.0.min.css
-
-Copyright (c) 2012, jQuery Foundation and other contributors.
-
-* source:  http://jquery.com/
-* source:  http://jquerymobile.com/
-* license: http://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt
-
+App Framework (formerly jQ.Mobi)
+-----------------------------------------------------------------------------
+* source:  https://github.com/01org/appframework
+* license: https://github.com/01org/appframework/blob/master/license.txt
+ 
+Images
+-----------------------------------------------------------------------------
+*simplemicrophone.png
+*simplemicrophone_rec.png
+all images are created by Intel Corp.
 
 Cordova (PhoneGap) Library
 --------------------------

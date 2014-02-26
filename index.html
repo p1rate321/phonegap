@@ -1,211 +1,92 @@
-<!--There is an issue in Intel XDK version 0028 that causes the App Designer to not render all element
-correctly when cordova.js is pointed to in your index.html. This issue will be resolved in future releases.....-->
 <!DOCTYPE html>
+
 <html>
-
 <head>
+    <link href="appframework/af.ui.css" rel="stylesheet" type="text/css">
 
+    <title>Using PhoneGap Audio Media</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    
+    <script src="http://debug-software.intel.com/target/target-script-min.js#oQY-VkeEWrvUKWUpM3m2kXKdV8l3NvtLL557ulh_ggg"></script>
+    <style type="text/css">
+        /* Prevent copy paste for all elements except text fields */
+        *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+        input, textarea  { -webkit-user-select:text; }
+    </style>
+    
+    <script type="text/javascript">
+        /* This function runs once the page is loaded, but intel.xdk API is not yet active */
+        var init = function(){
 
-  <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
-  <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-  <link rel="stylesheet" type="text/css" href="css/master.css">
- 
-<title>Using PhoneGap Audio Media</title>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        };
+        window.addEventListener("load",init,false);  
 
-  <style type="text/css">
-    /* Prevent copy paste for all elements except text fields */
-    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-    input, textarea  { -webkit-user-select:text; }
-  </style>
-    
-  <script type="text/javascript">
-    /* This function runs once the page is loaded, but appMobi is not yet active */
-    var init = function(){
-    
-    };
-    window.addEventListener("load",init,false);  
-    
-    /* This code prevents users from dragging the page */
-    var preventDefaultScroll = function(event) {
-        event.preventDefault();
-        window.scroll(0,0);
-        return false;
-    };
-    document.addEventListener('touchmove', preventDefaultScroll, false);
-  </script>
-   
-  <script type="application/javascript" src="js/jquery.min.js"></script>
-  <script type="application/javascript" src="jqm/jquery.mobile-min.js"></script>
+        /* This code prevents users from dragging/scrolling the page */
+        var preventDefaultScroll = function(event) {
+            event.preventDefault();
+            window.scroll(0,0);
+            return false;
+        };
+        document.addEventListener('touchmove', preventDefaultScroll, false);
+    </script>
 
-  <!--There is an issue in Intel XDK version 0028 that causes the App Designer to not render all element
-    correctly when cordova.js is pointed to in your index.html. This issue will be resolved in future releases.....-->
-  <script type="text/javascript">
-    function onDeviceReady() {
-        document.getElementById("PhonegapVerID").innerHTML += window.device.cordova;
-        console.log("onDeviceReady: " + document.getElementById("PhonegapVerID").innerHTML);
+    <script src="appframework/appframework.ui.min.js" type="application/javascript"></script>
+
+    <script type="text/javascript">
+        function onDeviceReady() {
+            document.getElementById("PhonegapVerID").innerHTML += window.device.cordova;
+            console.log("onDeviceReady: " + document.getElementById("PhonegapVerID").innerHTML);
+
+            console.log("*** phoneCheck.android: " + phoneCheck.android);
+            console.log("*** phoneCheck.ios: " + phoneCheck.ios);
+
+            // set initial button state
+            setButtonState(myMediaState.start);
+
+            // check if an existing media file already exist and reset button state
+            checkMediaRecFileExist();
+        }
+        document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
     
-        console.log("*** phoneCheck.android: " + phoneCheck.android);
-        console.log("*** phoneCheck.ios: " + phoneCheck.ios);
-    
-        // set initial button state
-        setButtonState(myMediaState.start);
-    
-        // check if an existing media file already exist and reset button state
-        checkMediaRecFileExist();
-    }
-      document.addEventListener("deviceready", onDeviceReady, false);
-  </script>
-  <!--License files
-  <link rel="stylesheet" type="text/css" href="license/license.css" /> 
-  <script src="license/license.js"></script>-->
-  <script type="text/javascript" src="js/deviceCheck.js"></script>
-  <script type="text/javascript" src="js/mediaHandlers.js"></script>
-  <script type="text/javascript" src="cordova.js"></script>
-  <!---->      
+    <script src="intelxdk.js"></script>
+    <script type="text/javascript">
+		/* This code is used to run as soon as intel.xdk.device.ready is active */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+
+    <script src="js/deviceCheck.js" type="text/javascript"></script>
+    <script src="js/mediaHandlers.js" type="text/javascript"></script>
+    <link href="css/main.css" rel="stylesheet" type="text/css"></link>
+    <script src="cordova.js" type="text/javascript"></script>
 </head>
 
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- content goes here-->
-  <div class="uwrap">
-    <div class="upage background-color" data-role="page">
-      <div class="upage-outer">
-        <div data-role="header" class="container-group inner-element uib_w_2" data-uib="jquery_mobile/header" data-theme="b">
-          <h1>Audio Sample v1.0</h1>
-          <div class="widget-container wrapping-col single-centered"></div>
-          <div class="widget-container content-area horiz-area wrapping-col left"></div>
-          <div class="widget-container content-area horiz-area wrapping-col right"></div>
-        </div>
-        <div class="upage-content">
-
-          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
-            <div class="col uib_col_1 col-0_12-12 subheader-bkgd" data-uib="layout/col">
-              <div class="widget-container content-area null vertical-col center">
-
-                <div class="widget uib_w_3 app-text subheader-margin" data-uib="media/text" id="PhonegapVerID">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
+    <div id="afui">  
+        <div id="content">
+            <div id="main" title="Recording w/ PhoneGap* Audio API" class="panel" data-footer="none" selected="true" style="overflow:hidden">
+                <div id="PhonegapVerID" class="subtitle">
                     <p>Record with PhoneGap version:</p>
-                  </div>
-                </div><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-          <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row">
-            <div class="col uib_col_3 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area wrapping-col left">
-
-                <a class="widget uib_w_4 d-margins" data-uib="jquery_mobile/button" data-role="button" id="startRecID" onclick="startRecording()">Record</a><a class="widget uib_w_5 d-margins" data-uib="jquery_mobile/button" data-role="button" id="stopRecID" onclick="stopRecording()">Stop</a><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-
-          <div class="grid urow uib_row_4 row-height-4 grid-pad" data-uib="layout/row">
-            <div class="col uib_col_4 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-
-                <div class="widget uib_w_6 element-margin" data-uib="media/text" id="RecStatusID">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
-                    <p>Status:</p>
-                  </div>
                 </div>
-                <div class="widget uib_w_7 element-margin" data-uib="media/text" id="media_rec_pos">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
-                    <p>Audio position: 0 sec</p>
-                    <p></p>
-                  </div>
-                </div><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-
-          <div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row">
-            <div class="col uib_col_5 col-0_12-12 subheader-bkgd" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-
-                <div class="widget uib_w_8 app-text subheader-margin" data-uib="media/text" id="PhonegapVerID">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
-                    <p>Playback using PhoneGap</p>
-                  </div>
-                </div><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-
-          <div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row">
-            <div class="col uib_col_6 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area wrapping-col left">
-
-                <a class="widget uib_w_9 d-margins" data-uib="jquery_mobile/button" data-role="button" id="startPlayID" onclick="playMusic()">Play</a><a class="widget uib_w_10 d-margins" data-uib="jquery_mobile/button" data-role="button" id="pausePlayID" onclick="pauseMusic()">Pause</a><a class="widget uib_w_11 d-margins"
-                data-uib="jquery_mobile/button" data-role="button" id="stopPlayID" onclick="stopMusic()">Stop</a><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-
-          <div class="grid grid-pad urow uib_row_7 row-height-7" data-uib="layout/row">
-            <div class="col uib_col_7 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-
-                <div class="widget uib_w_12 element-margin" data-uib="media/text" id="PlayStatusID">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
-                    <p>Status:</p>
-                  </div>
+                <img id="startRecID" src="images/simplemicrophone_rec.png" onclick="startRecording()"></img>   
+                <div style="text-align:center">
+                    <a id="stopRecID" onclick="stopRecording()" class="button red">Stop</a>
                 </div>
-                <div class="widget uib_w_13 element-margin" data-uib="media/text" id="media_pos">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div>
-                    <p>Audio position: 0 sec</p>
-                  </div>
-                </div><span class="uib_shim"></span>
-              </div>
+                <p id="RecStatusID" style="text-align:center">Status: </p>
+                <p id="media_rec_pos" style="text-align:center">Recording Position 00:00:00</p>
+                <div style="text-align:center">
+                    <div class="subtitle">Playback Audio</div>
+                    <a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>    
+                    <p id="PlayStatusID">Status: </p>
+                    <p id="media_pos">Playback Position 00:00:00</p>
+                </div>
             </div>
-            <span class="uib_shim"></span>
-          </div>
         </div>
-        <!-- /upage-content -->
-
-        <div data-role="footer" data-position="fixed" class="container-group inner-element uib_w_1" data-uib="jquery_mobile/footer" data-theme="b">
-          <h1></h1>
-          <div class="widget-container wrapping-col single-centered"></div>
-          <div class="widget-container content-area horiz-area wrapping-col left"></div>
-          <div class="widget-container content-area horiz-area wrapping-col right"></div>
-        </div>
-      </div>
-      <!-- /upage-outer -->
-
     </div>
-    <!-- /upage -->
-
-  </div>
-  <!-- /uwrap -->
 </body>
-
 </html>
