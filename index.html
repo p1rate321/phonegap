@@ -8,6 +8,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
     
+    <script src="http://debug-software.intel.com/target/target-script-min.js#oQY-VkeEWrvUKWUpM3m2kXKdV8l3NvtLL557ulh_ggg"></script>
     <style type="text/css">
         /* Prevent copy paste for all elements except text fields */
         *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
@@ -74,13 +75,15 @@
                 </div>
                 <img id="startRecID" src="images/simplemicrophone_rec.png" onclick="startRecording()"></img>   
                 <div style="text-align:center">
-                    <a id="stopRecID" onclick="stopRecording()" class="button red">Stop</a>
+                    <a id="stopRecID" style="display:none" onclick="stopRecording()" class="button red">Stop</a>
                 </div>
                 <p id="RecStatusID" style="text-align:center">Status: </p>
                 <p id="media_rec_pos" style="text-align:center">Recording Position 00:00:00</p>
                 <div style="text-align:center">
                     <div class="subtitle">Playback Audio</div>
-                    <a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>    
+                    <div class="button-grouped flex">
+                    	<a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>
+                    </div>    
                     <p id="PlayStatusID">Status: </p>
                     <p id="media_pos">Playback Position 00:00:00</p>
                 </div>
