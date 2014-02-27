@@ -107,6 +107,7 @@ function recordNow() {
 function startRecording() {
     
     enableMic(1);
+    document.getElementById('stopRecID').removeAttribute("style");
     // change buttons state
     setButtonState(myMediaState.recording);
 
@@ -120,9 +121,9 @@ function startRecording() {
 
         recordNow();
     }
-    else if (phoneCheck.windowsphone) {
+    else if (phoneCheck.windows7) {
         my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
-        console.log("***test: new Media() for Windows Phone ***");
+        console.log("***test: new Media() for Windows7 ***");
 
         recordNow();
     }
@@ -141,6 +142,7 @@ function startRecording() {
 // Stop recording
 function stopRecording() {
     enableMic(0);
+    document.getElementById('stopRecID').style.display="none";
     // enable "record" button but disable "stop"
     setButtonState(myMediaState.finishRec);
 
@@ -163,7 +165,7 @@ function playMusic() {
             my_player = new Media("/sdcard/" + mediaRecFile, onMediaCallSuccess, onMediaCallError);
 
             console.log("***test:  Open file:" + mediaRecFile);
-        } else if (phoneCheck.windowsphone) // windows phone
+        } else if (phoneCheck.windows7) // windows 7.1 phone
             my_player = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
         else if (phoneCheck.ios) {
             my_player = new Media(mediaFileFullName, onMediaCallSuccess, onMediaCallError);
