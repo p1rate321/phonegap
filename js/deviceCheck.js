@@ -1,6 +1,6 @@
 /*
-* Copyright (c) 2012, Intel Corporation. All rights reserved.
-* File revision: 04 October 2012
+* Copyright (c) 2014, Intel Corporation. All rights reserved.
+* File revision: 26 February 2012
 * Please see http://software.intel.com/html5/license/samples 
 * and the included README.md file for license terms and conditions.
 */
@@ -12,7 +12,7 @@ var phoneCheck = {
     ios: ua.match(/(iphone|ipod|ipad)/i),
     blackberry: ua.match(/blackberry/i),
     android: ua.match(/android/i),
-    windows7: ua.match(/windows phone os 7.5/i)
+    windowsphone: ua.match(/windows phone/i)
 };
 
 // detect browser
