@@ -20,7 +20,7 @@ Application Files
 * screenshot.png
 * css/main.css
 * js/deviceCheck.js
-* js/mediaHandlers.
+* js/mediaHandlers
 
 
 Copyright (c) 2014, Intel Corporation. All rights reserved.
