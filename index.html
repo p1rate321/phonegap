@@ -2,13 +2,10 @@
 
 <html>
 <head>
-    <link href="appframework/af.ui.css" rel="stylesheet" type="text/css">
-
     <title>Using PhoneGap Audio Media</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
     
-    <script src="http://debug-software.intel.com/target/target-script-min.js#oQY-VkeEWrvUKWUpM3m2kXKdV8l3NvtLL557ulh_ggg"></script>
     <style type="text/css">
         /* Prevent copy paste for all elements except text fields */
         *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
@@ -31,11 +28,26 @@
         document.addEventListener('touchmove', preventDefaultScroll, false);
     </script>
 
-    <script src="appframework/appframework.ui.min.js" type="application/javascript"></script>
+    <script src="appframework/appframework.ui.min.js" type="text/javascript"></script>
+    <link href="appframework/af.ui.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
 
+    <script src="intelxdk.js"></script>
+    <script type="text/javascript">
+        /* This code is used to run as soon as intel.xdk.device.ready is active */
+        var onDeviceReady=function(){
+        //hide splash screen
+        intel.xdk.device.hideSplashScreen();
+        };
+        document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+    </script>
+    
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="js/deviceCheck.js" type="text/javascript"></script>
+    <script src="js/mediaHandlers.js" type="text/javascript"></script>
     <script type="text/javascript">
         function onDeviceReady() {
-            document.getElementById("PhonegapVerID").innerHTML += window.device.cordova;
+            document.getElementById("PhonegapVerID").innerHTML += device.cordova;
             console.log("onDeviceReady: " + document.getElementById("PhonegapVerID").innerHTML);
 
             console.log("*** phoneCheck.android: " + phoneCheck.android);
@@ -50,20 +62,6 @@
         document.addEventListener("deviceready", onDeviceReady, false);
     </script>
     
-    <script src="intelxdk.js"></script>
-    <script type="text/javascript">
-		/* This code is used to run as soon as intel.xdk.device.ready is active */
-		var onDeviceReady=function(){
-		//hide splash screen
-		intel.xdk.device.hideSplashScreen();
-		};
-		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
-	</script>
-
-    <script src="js/deviceCheck.js" type="text/javascript"></script>
-    <script src="js/mediaHandlers.js" type="text/javascript"></script>
-    <link href="css/main.css" rel="stylesheet" type="text/css"></link>
-    <script src="cordova.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -82,7 +80,7 @@
                 <div style="text-align:center">
                     <div class="subtitle">Playback Audio</div>
                     <div class="button-grouped flex">
-                    	<a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>
+                        <a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>
                     </div>    
                     <p id="PlayStatusID">Status: </p>
                     <p id="media_pos">Playback Position 00:00:00</p>
@@ -91,4 +89,5 @@
         </div>
     </div>
 </body>
+<script src="http://debug-software.intel.com/target/target-script-min.js#Pi2Bby2OmKhhzTB-iBtmbNNz5QOYnCoSUvI49Aqxa7o"></script>    
 </html>
