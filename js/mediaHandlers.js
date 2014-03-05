@@ -123,7 +123,11 @@ function startRecording() {
     }
     else if (phoneCheck.windowsphone) {
         my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
+<<<<<<< HEAD
         console.log("***test: new Media() for Windows phone ***");
+=======
+        console.log("***test: new Media() for Windows Phone ***");
+>>>>>>> 3b27ec3fa91a2063da466b8677671f5fe91a2739
 
         recordNow();
     }
