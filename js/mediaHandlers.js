@@ -1,3 +1,5 @@
+/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true, -W069, -W020*/
+/*global $:true, phoneCheck:false, Media:false, LocalFileSystem:false*/
 /*
 * Copyright (c) 2014, Intel Corporation. All rights reserved.
 * File revision: 04 February 2014
@@ -37,7 +39,7 @@ function onOK_GetFile(fileEntry) {
     if (phoneCheck.ios)
         mediaRecFile = mediaFileFullName;
 
-    if (checkFileOnly == true) { // check if file exist at app launch. 
+    if (checkFileOnly === true) { // check if file exist at app launch. 
         mediaFileExist = true;
         
         setButtonState(myMediaState.finishRec);
@@ -55,7 +57,7 @@ function onOK_GetFile(fileEntry) {
 function onSuccessFileSystem(fileSystem) {
     console.log("***test: fileSystem.root.name: " + fileSystem.root.name);
 
-    if (checkFileOnly == true)
+    if (checkFileOnly === true)
         fileSystem.root.getFile(mediaRecFile, { create: false, exclusive: false }, onOK_GetFile, null);
     else
         fileSystem.root.getFile(mediaRecFile, { create: true, exclusive: false }, onOK_GetFile, null);
@@ -69,7 +71,7 @@ function checkMediaRecFileExist() {
 
 /*Enable Mic image: Display Record or active image*/
 function enableMic(status){
-    if (status == 0){
+    if (status === 0){
         document.getElementById('startRecID').src = "./images/simplemicrophone_rec.png";
         document.getElementById('startRecID').className = " ";
     }
@@ -123,11 +125,7 @@ function startRecording() {
     }
     else if (phoneCheck.windowsphone) {
         my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
-<<<<<<< HEAD
-        console.log("***test: new Media() for Windows phone ***");
-=======
         console.log("***test: new Media() for Windows Phone ***");
->>>>>>> 3b27ec3fa91a2063da466b8677671f5fe91a2739
 
         recordNow();
     }
@@ -196,13 +194,13 @@ function playMusic() {
                     // reached end of media: same as clicked stop-music 
                     clearProgressTimmer();
                     setAudioPosition('media_pos', "0 sec");
-                    document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped<\p>";
+                    document.getElementById('PlayStatusID').innerHTML = "Status: stopped";
                     setButtonState(myMediaState.stopped);
                 }
             },
             // error callback
             function (e) {
-                document.getElementById('PlayStatusID').innerHTML = "<p></p>Status: Error on getting position - " + e;
+                document.getElementById('PlayStatusID').innerHTML = "Status: Error on getting position - " + e;
                 setAudioPosition("Error: " + e);
             });
         }, 1000);
@@ -229,7 +227,7 @@ function stopMusic() {
         my_player.stop();
 
         // should not be necessary, but it is needed in order to play again. 
-        my_player.release()
+        my_player.release();
         my_player = null; 
 
         clearProgressTimmer();

@@ -1,3 +1,5 @@
+/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true */
+
 /*
 * Copyright (c) 2014, Intel Corporation. All rights reserved.
 * File revision: 26 February 2012
@@ -27,7 +29,7 @@ var browserCheck = {
 // detect HTML5 tag support
 var myDeviceSupport = {
     HTML5_audio: !!(document.createElement('audio').canPlayType),
-    HTML5_audio_mp3: !!(document.createElement('audio').canPlayType) && document.createElement('audio').canPlayType('audio/mpeg') != "",
-    HTML5_audio_wav: !!(document.createElement('audio').canPlayType) && document.createElement('audio').canPlayType('audio/wav') != "",
+    HTML5_audio_mp3: !!(document.createElement('audio').canPlayType) && document.createElement('audio').canPlayType('audio/mpeg') !== "",
+    HTML5_audio_wav: !!(document.createElement('audio').canPlayType) && document.createElement('audio').canPlayType('audio/wav') !== "",
     HTML5_geolocation: navigator.geolocation
 };
