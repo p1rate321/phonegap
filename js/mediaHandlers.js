@@ -1,11 +1,13 @@
+/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true, -W069, -W020*/
+/*global $:true, phoneCheck:false, Media:false, LocalFileSystem:false*/
 /*
-* Copyright (c) 2012, Intel Corporation. All rights reserved.
-* File revision: 04 October 2012
+* Copyright (c) 2014, Intel Corporation. All rights reserved.
+* File revision: 04 February 2014
 * Please see http://software.intel.com/html5/license/samples 
 * and the included README.md file for license terms and conditions.
 */
 
-var my_audio = null;
+var my_recorder = null, my_player = null;
 var progressTimmer = null;
 var createdStatus = false;
 var recTime = 0;
@@ -16,11 +18,11 @@ var mediaRecFile = "myRecording100.wav";
 var checkFileOnly = false;
 var mediaFileExist = false;
 var myMediaState = {start: 1, 
-					recording: 2, 
-					finishRec: 3, 
-					playback: 4, 
-					paused: 5,
-					stopped: 6 };
+                    recording: 2, 
+                    finishRec: 3, 
+                    playback: 4, 
+                    paused: 5,
+                    stopped: 6 };
 
 /* console.log et al are not always available in Firefox. This silences it and prevents a JS error. */
 if(typeof console === "undefined") {
@@ -30,132 +32,151 @@ if(typeof console === "undefined") {
 
 
 function onOK_GetFile(fileEntry) {
-	console.log("***test: File " + mediaRecFile + " at " + fileEntry.fullPath);
-	
+    console.log("***test: File " + mediaRecFile + " at " + fileEntry.fullPath);
+    
     // save the full file name
     mediaFileFullName = fileEntry.fullPath;
     if (phoneCheck.ios)
         mediaRecFile = mediaFileFullName;
 
-	if (checkFileOnly == true) { // check if file exist at app launch. 
-		mediaFileExist = true;
+    if (checkFileOnly === true) { // check if file exist at app launch. 
+        mediaFileExist = true;
         
-	    setButtonState(myMediaState.finishRec);
-	} 
-	else { // record on iOS
+        setButtonState(myMediaState.finishRec);
+    } 
+    else { // record on iOS
         
-		// create media object using full media file name 
-		my_audio = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
+        // create media object using full media file name 
+        my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
 
-		// specific for iOS device: recording start here in call-back function
-		recordNow();
-	}
+        // specific for iOS device: recording start here in call-back function
+        recordNow();
+    }
 }
 
 function onSuccessFileSystem(fileSystem) {
-	console.log("***test: fileSystem.root.name: " + fileSystem.root.name);
+    console.log("***test: fileSystem.root.name: " + fileSystem.root.name);
 
-    if (checkFileOnly == true)
-    	fileSystem.root.getFile(mediaRecFile, { create: false, exclusive: false }, onOK_GetFile, null);
+    if (checkFileOnly === true)
+        fileSystem.root.getFile(mediaRecFile, { create: false, exclusive: false }, onOK_GetFile, null);
     else
-    	fileSystem.root.getFile(mediaRecFile, { create: true, exclusive: false }, onOK_GetFile, null);
+        fileSystem.root.getFile(mediaRecFile, { create: true, exclusive: false }, onOK_GetFile, null);
     
 }
+
 function checkMediaRecFileExist() {
-	checkFileOnly = true;
+    checkFileOnly = true;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccessFileSystem, null);
 }
 
+/*Enable Mic image: Display Record or active image*/
+function enableMic(status){
+    if (status === 0){
+        document.getElementById('startRecID').src = "./images/simplemicrophone_rec.png";
+        document.getElementById('startRecID').className = " ";
+    }
+    else if (status == 1){
+        document.getElementById('startRecID').src = "./images/simplemicrophone.png";
+        document.getElementById('startRecID').className += " greenoutline";
+    }
+}
+
+
 function recordNow() {
-	if (my_audio) {
-		my_audio.startRecord();
-		document.getElementById('RecStatusID').innerHTML = "Status: recording";
-		console.log("***test:  recording started: in startRecording()***");
-	}
-	else
-		console.log("***test:  my_audio==null: in startRecording()***");
+    if (my_recorder) {
+        my_recorder.startRecord();
+        document.getElementById('RecStatusID').innerHTML = "Status: recording";
+        console.log("***test:  recording started: in startRecording()***");
+    }
+    else
+        console.log("***test:  my_recorder==null: in startRecording()***");
 
-	// reset the recTime every time when recording
-	recTime = 0;
+    // reset the recTime every time when recording
+    recTime = 0;
 
-	// Stop recording after 10 sec
-	progressTimmer = setInterval(function() {
-		recTime = recTime + 1;
-		setAudioPosition('media_rec_pos', recTime + " sec");
-		if (recTime >= 10)
-			stopRecording();
-		console.log("***test: interval-func()***");
-	}, 1000);
+    // Stop recording after 10 sec
+    progressTimmer = setInterval(function() {
+        recTime = recTime + 1;
+        setAudioPosition('media_rec_pos', recTime + " sec");
+        if (recTime >= 10)
+            stopRecording();
+        console.log("***test: interval-func()***");
+    }, 1000);
 }
 
 // Record audio    
 //     
 function startRecording() {
+    
+    enableMic(1);
+    document.getElementById('stopRecID').removeAttribute("style");
     // change buttons state
     setButtonState(myMediaState.recording);
 
     // create media object - overwrite existing recording
-    if (my_audio)
-    	my_audio.release();
+    if (my_recorder)
+        my_recorder.release();
 
     if (phoneCheck.android) {
-    	my_audio = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
-    	console.log("***test: new Media() for android ***");
+        my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
+        console.log("***test: new Media() for android ***");
 
-    	recordNow();
+        recordNow();
     }
-    else if (phoneCheck.windows7) {
-    	my_audio = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
-    	console.log("***test: new Media() for Windows7 ***");
+    else if (phoneCheck.windowsphone) {
+        my_recorder = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
+        console.log("***test: new Media() for Windows Phone ***");
 
-    	recordNow();
+        recordNow();
     }
     else if (phoneCheck.ios) {
-    	//first create the file
-    	checkFileOnly = false;
-    	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccessFileSystem, function() {
-    		console.log("***test: failed in creating media file in requestFileSystem");
-    	});
+        //first create the file
+        checkFileOnly = false;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccessFileSystem, function() {
+            console.log("***test: failed in creating media file in requestFileSystem");
+        });
 
-    	console.log("***test: new Media() for ios***");
+        console.log("***test: new Media() for ios***");
     }
     
 }
 
 // Stop recording
 function stopRecording() {
+    enableMic(0);
+    document.getElementById('stopRecID').style.display="none";
     // enable "record" button but disable "stop"
     setButtonState(myMediaState.finishRec);
 
-    if (my_audio) 
-		my_audio.stopRecord(); // the file should be moved to "/sdcard/"+mediaRecFile
+    if (my_recorder) 
+        my_recorder.stopRecord(); // the file should be moved to "/sdcard/"+mediaRecFile
 
     clearProgressTimmer();
 
-    document.getElementById('RecStatusID').innerHTML = "<p>Status: stopped record</p>";
+    document.getElementById('RecStatusID').innerHTML = "Status: stopped record";
     console.log("***test: recording stopped***");
 }
 
 // Play audio        
 //
 function playMusic() {
-	if (my_audio === null) { // play existing media recorded from previous session
-		
-		// the existing medail should be on /sdcard/ for android. 
+    if (my_player === null) { // play existing media recorded from previous session
+        
+        // the existing medail should be on /sdcard/ for android. 
         if (phoneCheck.android) {
-        	my_audio = new Media("/sdcard/" + mediaRecFile, onMediaCallSuccess, onMediaCallError);
+            my_player = new Media("/sdcard/" + mediaRecFile, onMediaCallSuccess, onMediaCallError);
 
             console.log("***test:  Open file:" + mediaRecFile);
-        } else if (phoneCheck.windows7) // windows 7.1 phone
-            my_audio = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
+        } else if (phoneCheck.windowsphone) // windows phone
+            my_player = new Media(mediaRecFile, onMediaCallSuccess, onMediaCallError);
         else if (phoneCheck.ios) {
-            my_audio = new Media(mediaFileFullName, onMediaCallSuccess, onMediaCallError);
+            my_player = new Media(mediaFileFullName, onMediaCallSuccess, onMediaCallError);
         }
     }
 
     // Play audio
-    if (my_audio) {
-        my_audio.play();
+    if (my_player) {
+        my_player.play();
         document.getElementById('PlayStatusID').innerHTML = "<p></p>Status: playing...";
 
         setButtonState(myMediaState.playback);
@@ -163,8 +184,8 @@ function playMusic() {
         // Update media position every second
         clearProgressTimmer();
         progressTimmer = setInterval(function () {
-            // get my_audio position
-            my_audio.getCurrentPosition(
+            // get my_player position
+            my_player.getCurrentPosition(
             // success callback
             function (position) {
                 if (position >= 0)
@@ -173,13 +194,13 @@ function playMusic() {
                     // reached end of media: same as clicked stop-music 
                     clearProgressTimmer();
                     setAudioPosition('media_pos', "0 sec");
-                    document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped<\p>";
+                    document.getElementById('PlayStatusID').innerHTML = "Status: stopped";
                     setButtonState(myMediaState.stopped);
                 }
             },
             // error callback
             function (e) {
-                document.getElementById('PlayStatusID').innerHTML = "<p></p>Status: Error on getting position - " + e;
+                document.getElementById('PlayStatusID').innerHTML = "Status: Error on getting position - " + e;
                 setAudioPosition("Error: " + e);
             });
         }, 1000);
@@ -188,8 +209,8 @@ function playMusic() {
 // Pause audio
 //
 function pauseMusic() {
-    if (my_audio) {
-        my_audio.pause();
+    if (my_player) {
+        my_player.pause();
         document.getElementById('PlayStatusID').innerHTML = "<p>Status: paused</p>";
 
         clearProgressTimmer();
@@ -199,20 +220,21 @@ function pauseMusic() {
 // Stop audio        
 //         
 function stopMusic() {
-    if (my_audio) {
+    if (my_player) {
         setAudioPosition('media_pos', "0 sec");
         setButtonState(myMediaState.stopped);
 
-        my_audio.stop();
+        my_player.stop();
 
         // should not be necessary, but it is needed in order to play again. 
-        my_audio.release()
-        my_audio = null; 
+        my_player.release();
+        my_player = null; 
 
         clearProgressTimmer();
         document.getElementById('PlayStatusID').innerHTML = "<p>Status: stopped</p>";
     }
 }
+
 function clearProgressTimmer() {
     if (progressTimmer) {
         clearInterval(progressTimmer);
@@ -226,18 +248,23 @@ function onMediaCallSuccess() {
 }
 // Media() error callback        
 function onMediaCallError(error) {
-	console.log("***test: new Media() failed ***");
+    console.log("***test: new Media() failed ***");
 }
 // Set audio position        
 //
 function setAudioPosition(audioPosID, position) {
-    document.getElementById(audioPosID).innerHTML = "<p></p>Audio position: "+position;
+    if(audioPosID == "media_rec_pos"){
+        document.getElementById(audioPosID).innerHTML = "Recording position: 00:00:"+position;
+    }
+    if(audioPosID == "media_pos"){
+        document.getElementById(audioPosID).innerHTML = "Playback position: 00:00:"+position;
+    }
 }
 
 // only "Record" button is enabled at init state
 function setButtonState(curState)
 {
-    var id_disabled_map = {"startRecID":false, 
+    var id_disabled_map = {"startRecID":false,
                              "stopRecID":true, 
                              "startPlayID":true, 
                              "pausePlayID":true, 
