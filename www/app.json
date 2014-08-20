@@ -1,0 +1,15 @@
+{
+	"reponame":"sample-typefaces",
+	"title":"Typefaces",
+	"tooltip":"Unique Typeface Sample",
+	"description":"An application to demonstrate how to include unique fonts in an HTML5 app.",
+	"articleurl":"http://software.intel.com/en-us/articles/intel-xdk-typefaces-sample",
+	"keywords":["CSS3","UI Fonts"],
+	"highlights":["CSS3", "UI Fonts"],
+	"visible": "true",
+	"apppreview":"false",
+	"appname":"demo.typefaces",
+	"relname":"4.0.0"
+}
+
+
