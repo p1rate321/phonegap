@@ -5,11 +5,11 @@
       "type": "Demo",
       "createDefaultBuildConfigs": true,
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
-      "src": "https://edge-intel.s3.amazonaws.com/samples/production/sample-typefaces/sample.zip",
+      "src": "https://edge-intel.s3.amazonaws.com/samples/production/sample-phonegap-audio/sample.zip",
       "sourceDirectory": "www",
-      "projectGuid": "c9738778-93a0-4a8e-ab13-3e9204262e62",
-      "lastModifiedDate": 1407990389294,
-      "creationDate": 1407989968848
+      "projectGuid": "8b68f133-5256-4398-81ae-6a9a285cf047",
+      "lastModifiedDate": 1407976516784,
+      "creationDate": 1407975130345
     },
     "sourceDirectory": "www",
     "cordovaPluginsDirectory": "plugins",
@@ -46,6 +46,13 @@
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.media",
+        "version": "0.2.8",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
       }
     ],
     "serviceMethods": [],
@@ -59,8 +66,8 @@
           "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "Typefaces",
-        "appID_": "xdk.sample.typefaces",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -71,8 +78,8 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "An application to demonstrate how to include unique fonts in an HTML5 app.",
-        "appVersionCode_": "1"
+        "appVersionCode_": "1",
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "Android-Crosswalk": {
         "platform_": "android",
@@ -83,8 +90,8 @@
           "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "Typefaces",
-        "appID_": "xdk.sample.typefaces",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -95,8 +102,7 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Crosswalk with Cordova 3.x",
-        "appDescription_": "An application to demonstrate how to include unique fonts in an HTML5 app.",
-        "appAuthor_": "",
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists.",
         "appVersionCode_": "1"
       },
       "iOS": {
@@ -107,8 +113,8 @@
           "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "Typefaces",
-        "appID_": "xdk.sample.typefaces",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -119,7 +125,7 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "An application to demonstrate how to include unique fonts in an HTML5 app."
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "Windows8": {
         "platform_": "windows8",
@@ -128,8 +134,8 @@
           "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "Typefaces",
-        "appID_": "xdk.sample.typefaces",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -140,14 +146,14 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "An application to demonstrate how to include unique fonts in an HTML5 app."
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "WindowsPhone8": {
         "platform_": "wp8",
         "name_": "WindowsPhone8",
         "preferences_": {},
         "isActive_": true,
-        "appName_": "Typefaces",
+        "appName_": "PhoneGapAudio",
         "appID_": "not.yet.specified",
         "appAccess_": "*",
         "icons_": [],
