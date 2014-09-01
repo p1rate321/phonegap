@@ -34,6 +34,20 @@
     ],
     "cordovaPlugins": [
       {
+        "id": "org.apache.cordova.media",
+        "version": "0.2.8",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.media-capture",
+        "version": "0.2.8",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
         "id": "org.apache.cordova.device",
         "version": "0.2.5",
         "selectedState": "Included",
@@ -48,8 +62,7 @@
         "paramvals": {}
       },
       {
-        "id": "org.apache.cordova.media",
-        "version": "0.2.8",
+        "id": "intel.xdk.device",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
