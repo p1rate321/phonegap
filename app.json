@@ -3,7 +3,7 @@
 	"title":"PhoneGap Audio",
 	"tooltip":"[Cordova for Android] Use a Cordova media object to record and playback an audio sound.",
 	"description":"Use a Cordova media object to record and playback audio. Also detects if a previous recording exists.",
-	"highlights":["Apache Cordova* API", "App Framework", "Audio Input"],
+	"highlights":["Apache Cordova API", "App Framework", "Audio Input"],
 	"apppreview":"false",
 	"appname":"demo.phonegapaudio",
 	"articleUrl":"http://software.intel.com/en-us/html5/articles/media-sample-with-phonegap",
