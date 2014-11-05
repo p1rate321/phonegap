@@ -35,28 +35,28 @@
     "cordovaPlugins": [
       {
         "id": "org.apache.cordova.media",
-        "version": "0.2.8",
+        "version": "0.2.10",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "org.apache.cordova.media-capture",
-        "version": "0.2.8",
+        "version": "0.3.0",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "org.apache.cordova.device",
-        "version": "0.2.5",
+        "version": "0.2.9",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "org.apache.cordova.splashscreen",
-        "version": "0.2.5",
+        "version": "0.3.0",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
