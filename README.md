@@ -1,29 +1,27 @@
-PhoneGap Audio
--------------------------------------------
-This sample application demonstrates the use of the PhoneGap media object APIs 
-for audio recording and playback. 
+MASHERY-HOTWIRE API DEMO APP
+==================================================================
+Created lovingly for the developer community by Mashery.
+http://www.mashery.com
+http://developer.mashery.com
 
 Intel(R) XDK
 -------------------------------------------
 This sample is part of the Intel(R) XDK. 
-Download the Intel XDK at http://software.intel.com/en-us/html5.
+Please sign up at http://software.intel.com/en-us/html5.
 To see the technical detail of the sample, please visit the sample article page 
-at http://software.intel.com/en-us/articles/media-sample-using-phonegap. 
+at _. 
 
 Application Files
 -----------------
 * app.json
 * icon.png
 * index.html
-* README.md
-* LICENSE
+* readme.md
 * screenshot.png
-* css/main.css
-* js/deviceCheck.js
-* js/mediaHandlers
+* css/*
+* js/*
 
-
-Copyright (c) 2014, Intel Corporation. All rights reserved.
+Copyright (c) 2012-2013, Intel Corporation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
@@ -54,17 +52,97 @@ App Framework (formerly jQ.Mobi)
 -----------------------------------------------------------------------------
 * source:  https://github.com/01org/appframework
 * license: https://github.com/01org/appframework/blob/master/license.txt
- 
-Images
------------------------------------------------------------------------------
-*simplemicrophone.png
-*simplemicrophone_rec.png
-all images are created by Intel Corp.
 
-Cordova (PhoneGap) Library
---------------------------
-* cordova.js (cordova-2.0.0.js)
+SYNOPSIS
+==================================================================
+This demo App provides a way to see the Hotwire API in action. 
+It is built using Intel(R) XDK that lets you create mobile apps for smartphones and tablets using
+standard web languages (HTML5, CSS, and JavaScript).
 
-* source:  http://www.phonegap.com/
-* license:  http://www.apache.org/licenses/LICENSE-2.0.html
 
+WHAT DOES THIS APP DO?
+==================================================================
+Uses Hotwire's API to find fantastic hotel deals within the vicinity of a postal code.
+
+GETTING STARTED
+==================================================================
+You will need the following to get started -
+
+1. Intel(R) XDK. Free Download - http://xdk-software.intel.com/
+2. A Hotwire API key (Register at http://developer.hotwire.com/member/register).
+
+
+OBTAINING THE API KEY
+==================================================================
+Before you can begin using this app, you will need to get an API key 
+from Hotwire at http://developer.hotwire.com/member/register. This will also 
+give you a Single Sign-On Mashery ID with access to hundreds of other APIs.
+
+
+SETTING UP THE API KEY IN THIS APP
+==================================================================
+Once you have obtained your API key, assign the API key to the 
+variable api_key on line 1 of the file hotwire.js, like so -
+
+<pre>
+	var api_key ='your_api_key_here';
+</pre>
+
+
+ABOUT THE HOTWIRE API
+==================================================================
+Hotwire's APIs allows developer to access travel deals and pricing information. The APIs available are:
+
+1. Hotel Deals
+2. Hotel Shopping
+3. Rental Car Shopping
+4. TripStarter
+5. Travel Ticker Deals
+
+In this demo app we utilize the Hotel Deals API. In the source code
+you can observe how easy it is to make an API call, parse the 
+API response and return the information back to the end-user. 
+
+Get detailed information about the Hotwire APIs at 
+http://developer.hotwire.com/docs/read/Home
+
+HOTWIRE AFFILIATE PROGRAM
+=========================
+Monetizing your apps built on top of the Hotwire API is possible
+with the Hotwire affiliate program. When you are approved, you
+modify your API calls to include your affiliate ID. Qualified
+airline, hotel and rental car bookings will earn you money as
+end-users find and purchase travel deals. 
+
+You can find out more at the Hotwire develeoper portal. 
+
+
+HOTWIRE INTERACTIVE API DOCUMENTATION
+==================================================================
+To learn more about the data set provided by Hotwire's APIs, visit
+their interactive documentation at http://developer.hotwire.com/iodocs
+
+
+ABOUT THE MASHERY API NETWORK
+==================================================================
+The Mashery API Network (http://developer.mashery.com) is an open
+data commons of over 50 RESTful APIs that developers can access 
+with their Mashery ID.  
+
+Mashery is the world's leading API management service provider, helping 
+companies provide the best API experience for developers, as well as 
+the most advanced API management and reporting tools to our clients. 
+
+
+EXPLORE MORE APIS
+==================================================================
+Check out Mashery's API Network at http://developer.mashery.com/apis
+to explore other awesome APIs including NY Times, Klout, USA TODAY, 
+Rotten Tomatoes, Best Buy, Hoovers, Edmunds, Netflix, Rdio,
+ESPN, Rovi and many more. 
+
+
+SUPPORT
+==================================================================
+If you have any questions or need any help obtaining an API key, 
+you can reach out to us at: developer-relations@mashery.com
