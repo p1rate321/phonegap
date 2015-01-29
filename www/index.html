@@ -1,93 +1,86 @@
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta http-equiv="Pragma" content="no-cache">
-        <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
-        <script src='cordova.js'></script> 
-        <!--
-            Include xhr.js in your index.html when using web services that make cross origin requests
-            This file makes those requests successfully when testing your apps under the "EMULATE" & "TEST" tab with the 
-            Intel(R) App Preview mobile app.
-        -->
-        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
-        <script type="text/javascript" language="javascript">
-            // This event handler is fired when the JS libraries are ready
-            function onDeviceReady() {
-                // Hide splash screen now that the app is ready to run
-                var onDeviceReady=function(){                             // called when Cordova is ready
-                    if( window.Cordova && navigator.splashscreen ) {     // Cordova API detected
-					   navigator.splashscreen.hide();                 // hide splash screen
-				}
-            };
-           document.addEventListener("deviceready", onDeviceReady, false);
-                
-                setTimeout(function () {
-                    $.ui.launch();
-                }, 50);
-                
-                checkKeyValidity();
-            }
-            // Initial event handler to detect when Intel library is ready to roll
-            document.addEventListener("deviceready", onDeviceReady, false);
-        </script>
-        <script type="text/javascript" src="js/appframework.min.js"></script>
-        <script type="text/javascript" src="js/appframework.ui.min.js"></script>
-        <script type="text/javascript" src="js/api.js"></script>
-        <script>
-            $.ui.autoLaunch = false;
-            $.ui.useOSThemes = false; 
-            $.ui.blockPageScroll();
-            $.ui.backButtonText = "Back";
-        </script>
-        <link href="css/mashery.css" rel="stylesheet" type="text/css">
-        <link href="css/icons.css" rel="stylesheet" type="text/css">
-        <link href="css/af.ui.css" rel="stylesheet" type="text/css">
-    </head>
-    <div id="afui">
-        <div id="header"></div>
-        <div id="content" style="">
-            <div class="panel" title="Hotwire Demo" id="home" selected="selected" style="" data-footer="none">
-                <div class="grid">
-                    <div class="col2 img-inline">
-                        <img src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw==" id="img-hotwire">
-                    </div>
-                    <div class="col2 img-inline">
-                        <img src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw==" id="img-mashery">
-                    </div>
+<head>
+    <title>Using PhoneGap Audio Media</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    
+    <style type="text/css">
+        /* Prevent copy paste for all elements except text fields */
+        *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+        input, textarea  { -webkit-user-select:text; }
+    </style>
+    
+    <script type="text/javascript">
+        /* This code prevents users from dragging/scrolling the page */
+        var preventDefaultScroll = function(event) {
+            event.preventDefault();
+            window.scroll(0,0);
+            return false;
+        };
+        document.addEventListener('touchmove', preventDefaultScroll, false);
+    </script>
+
+    <script src="appframework/appframework.ui.min.js" type="text/javascript"></script>
+    <link href="appframework/af.ui.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+    <script src="intelxdk.js"></script>
+  <script src='cordova.js'></script> 
+  <script src='xhr.js'></script>
+    <script src="js/deviceCheck.js" type="text/javascript"></script>
+    <script src="js/mediaHandlers.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function onDeviceReady() {
+           if( window.Cordova && navigator.splashscreen ) {     // Cordova API detected
+                navigator.splashscreen.hide();                 // hide splash screen
+            }       
+            document.getElementById("PhonegapVerID").innerHTML += device.cordova;
+            console.log("onDeviceReady: " + document.getElementById("PhonegapVerID").innerHTML);
+
+            console.log("*** phoneCheck.android: " + phoneCheck.android);
+            console.log("*** phoneCheck.ios: " + phoneCheck.ios);
+
+            // set initial button state
+            setButtonState(myMediaState.start);
+
+            // check if an existing media file already exist and reset button state
+            checkMediaRecFileExist();
+        }
+        document.addEventListener("deviceready", onDeviceReady, false);
+    </script>
+    
+</head>
+
+<body>
+    <div id="afui">  
+        <div id="content">
+            <div id="main" title="Recording w/ PhoneGap*" class="panel" data-footer="none" selected="true" style="overflow:hidden">
+                <div id="PhonegapVerID" class="subtitle">
+                    <p>Record with PhoneGap version:</p>
                 </div>
-                <div>
-                    <p>The Hotwire APIs deliver hotel and rental car listing deals from across the world. The API is easy to use with very 
-                        powerful sorting and filtering options. This sample app uses the Hotel Deals API, returning deals ranked by proximity.
-                    </p>
-                    <p>Visit <a href="http://developer.hotwire.com" target="_blank">developer.hotwire.com</a> to get your free API key today.</p>
+                <img id="startRecID" src="images/simplemicrophone_rec.png" onclick="startRecording()"></img>   
+                <div style="text-align:center">
+                    <a id="stopRecID" style="display:none" onclick="stopRecording()" class="button red">Stop</a>
                 </div>
-                <div>
-                    <label class="narrow-control label-inline" for="zip">ZIP Code</label>
-                    <input class="wide-control" placeholder="Ex: 94103" type="text" id="zip" />
-                </div>
-                <div style="text-align:center;">
-                    <!-- On button click, execute searchDeals function in api.js -->
-                    <a class="button widget uib_w_6 d-margins" data-uib="app_framework/button" 
-                        onclick="javascript:searchDeals();">Search Hotwire</a>
-                </div>
-            </div>
-            <div class="panel" title="Results" id="search-results" data-appbuilder-object="page" data-footer="none">
-                <div id="hotwire-results-header">
-                    <div class="col2 img-inline">
-                        <img src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw==" id="img-hotwire">
-                    </div>
-                    <div class="col2 img-inline">
-                        <img src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw==" id="img-mashery">
-                    </div>
-                </div>
-                
-                <div id="hotwire-results-output">
-                    <div class="deals"></div>
+                <p id="RecStatusID" style="text-align:center">Status: </p>
+                <p id="media_rec_pos" style="text-align:center">Recording Position 00:00:00</p>
+                <div style="text-align:center">
+                    <div class="subtitle">Playback Audio</div>
+                    <div class="button-grouped flex">
+                        <a id="startPlayID" onclick="playMusic()" class="button blue">Play</a><a id="pausePlayID" onclick="pauseMusic()" class="button blue">Pause</a><a id="stopPlayID" onclick="stopMusic()" class="button red">Stop</a>
+                    </div>    
+                    <p id="PlayStatusID">Status: </p>
+                    <p id="media_pos">Playback Position 00:00:00</p>
                 </div>
             </div>
         </div>
     </div>
+	<script type="text/javascript">
+		setTimeout(function(){
+			alert("Note: This sample should be built with 'Cordova for Android' Build target.")
+		},3000);
+	</script>
+</body>
 </html>

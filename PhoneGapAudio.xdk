@@ -5,11 +5,11 @@
       "type": "Demo",
       "createDefaultBuildConfigs": true,
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
-      "src": "https://edge-intel.s3.amazonaws.com/samples/production/sample-masheryhotwire/sample.zip",
+      "src": "https://edge-intel.s3.amazonaws.com/samples/production/sample-phonegap-audio/sample.zip",
       "sourceDirectory": "www",
-      "projectGuid": "6f1f53f7-e8a5-4075-b58c-a52e9184b9a0",
-      "lastModifiedDate": 1407971272601,
-      "creationDate": 1407968758740
+      "projectGuid": "8b68f133-5256-4398-81ae-6a9a285cf047",
+      "lastModifiedDate": 1407976516784,
+      "creationDate": 1407975130345
     },
     "sourceDirectory": "www",
     "cordovaPluginsDirectory": "plugins",
@@ -34,6 +34,20 @@
     ],
     "cordovaPlugins": [
       {
+        "id": "org.apache.cordova.media",
+        "version": "0.2.10",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.media-capture",
+        "version": "0.3.0",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
         "id": "org.apache.cordova.device",
         "version": "0.2.9",
         "selectedState": "Included",
@@ -46,6 +60,12 @@
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.device",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
       }
     ],
     "serviceMethods": [],
@@ -55,11 +75,12 @@
         "name_": "Android",
         "preferences_": {
           "android-minSdkVersion": "10",
-          "android-targetedSdkVersion": "19"
+          "android-targetedSdkVersion": "19",
+          "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "MasheryHotwire",
-        "appID_": "xdk.sample.masheryhotwire",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -70,19 +91,20 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "This demo app provides a way to see the Hotwire API in action.",
-        "appVersionCode_": "1"
+        "appVersionCode_": "1",
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "Android-Crosswalk": {
         "platform_": "android",
         "name_": "Android-Crosswalk",
         "preferences_": {
           "android-minSdkVersion": "14",
-          "android-targetedSdkVersion": "19"
+          "android-targetedSdkVersion": "19",
+          "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "MasheryHotwire",
-        "appID_": "xdk.sample.masheryhotwire",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -93,19 +115,19 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Crosswalk with Cordova 3.x",
-        "appDescription_": "This demo app provides a way to see the Hotwire API in action.",
-        "appVersionCode_": "1",
-        "appAuthor_": ""
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists.",
+        "appVersionCode_": "1"
       },
       "iOS": {
         "platform_": "ios",
         "name_": "iOS",
         "preferences_": {
-          "ios-target": "5"
+          "ios-target": "5",
+          "Orientation": "portrait"
         },
         "isActive_": true,
-        "appName_": "MasheryHotwire",
-        "appID_": "xdk.sample.masheryhotwire",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -116,15 +138,17 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "This demo app provides a way to see the Hotwire API in action."
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "Windows8": {
         "platform_": "windows8",
         "name_": "Windows8",
-        "preferences_": {},
+        "preferences_": {
+          "Orientation": "portrait"
+        },
         "isActive_": true,
-        "appName_": "MasheryHotwire",
-        "appID_": "xdk.sample.masheryhotwire",
+        "appName_": "PhoneGapAudio",
+        "appID_": "xdk.sampe.phonegapaudio",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -135,14 +159,14 @@
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.0.1",
         "runtime_": "Cordova 3.x",
-        "appDescription_": "This demo app provides a way to see the Hotwire API in action."
+        "appDescription_": "Use a Cordova media object to record and playback audio. Also detects if a previous recording exists."
       },
       "WindowsPhone8": {
         "platform_": "wp8",
         "name_": "WindowsPhone8",
         "preferences_": {},
         "isActive_": true,
-        "appName_": "MasheryHotwire",
+        "appName_": "PhoneGapAudio",
         "appID_": "not.yet.specified",
         "appAccess_": "*",
         "icons_": [],
