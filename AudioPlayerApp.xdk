@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "https://edge-intel.s3.amazonaws.com/jsapp/production/release-2014-ww51/sample-audio-player/sample.zip",
          "projectGuid": "00000000-0000-0000-0000-000000000000",
-      "lastModifiedDate": 1430098687846,
+      "lastModifiedDate": 1429659602512,
       "creationDate": 1423511546390
     },
     "XDK-app-designer": "true",
@@ -224,8 +224,8 @@
         "iosProvs_": [],
          "cordovaCLIVersion_": "?",
          "crosswalkVersion_": "?",
-         "appAuthor_": "Intel XDK",
         "appVersion_": "1.0.0",
+        "appAuthor_": "Intel XDK",
         "appVersionCode_": "1"
       },
       "Android-Crosswalk": {
@@ -276,10 +276,10 @@
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
-        "appAuthor_": "Intel XDK",
         "iosProvs_": [],
          "cordovaCLIVersion_": "?",
          "crosswalkVersion_": "?",
+         "appAuthor_": "Intel XDK",
         "appVersion_": "1.0.0"
       },
       "Windows8": {
