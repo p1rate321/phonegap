@@ -1,6 +1,6 @@
 {
    "projectTypeName" : "com.intel.xdk.projecttype.jsapp",
-   "articleUrl" : "http://software.intel.com/en-us/html5/articles/media-sample-with-phonegap",
+   "articleUrl" : "https://software.intel.com/en-us/xdk/article/media-sample-with-phonegap",
    "highlights" : [
       "Apache Cordova API",
       "App Framework",
