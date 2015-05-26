@@ -198,7 +198,7 @@
          "cordovaCLIVersion_": "?",
          "crosswalkVersion_": "?",
         "appVersion_": "1.0.0.0",
-         "appAuthor_": "Intel XDK",
+         "appAuthor_": "Intel XDK"
       },
       "WebApp": {
         "platform_": "webapp",
