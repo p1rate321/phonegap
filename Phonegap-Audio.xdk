@@ -159,23 +159,6 @@
                 "gitref": "",
                 "name": "Splashscreen",
                 "description": "Cordova Splashscreen Plugin"
-            },
-            {
-                "id": "com.google.admob",
-                "version": "?",
-                "selectedState": "Included",
-                "data": {},
-                "paramvals": {},
-                "dependsOn": [],
-                "dependedBy": [],
-                "custom": "true",
-                "name": "Admob",
-                "origin": "com.google.admob",
-                "originType": "cordova.io",
-                "permissions": {},
-                "topLevel": true,
-                "gitref": "",
-                "description": "\n    Admob  Plugin ,base on admob ios sdk 6.10 and android google play service sdk 4.5 ,support ios and android,support admob v1 and admob v2,support all admob banner and Interstitial\n    project home: https://sourceforge.net/projects/phonegap-admob/?source=directory"
             }
         ],
         "serviceMethods": [],
