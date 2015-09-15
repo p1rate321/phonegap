@@ -178,7 +178,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -208,7 +209,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -237,7 +239,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -263,7 +266,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -288,7 +292,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -311,7 +316,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -334,7 +340,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -357,7 +364,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
@@ -380,7 +388,8 @@
                 "appAccess_": {
                     "mode": "legacy",
                     "network": [
-                        "http://debug-software.intel.com/*"
+                        "http://debug-software.intel.com/*", 
+                        "https://debug-software.intel.com/*"
                     ],
                     "intents": [],
                     "navigation": []
